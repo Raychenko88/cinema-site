@@ -13,9 +13,9 @@
   <groupId>org.example</groupId>
   <artifactId>cinema-site</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-
   <name>cinema-site</name>
-  <!-- FIXME change it to the project's website -->
+  <description>cinema-site</description>
+
   <url>http://www.example.com</url>
 
   <properties>

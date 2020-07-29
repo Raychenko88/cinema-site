@@ -3,6 +3,7 @@ package org.example.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 
 @Setter
@@ -20,7 +21,7 @@ public class Film {
     @Column(name = "movie_title", length = 100)
     String movieTitle;
     @Column(name = "release_date", length = 30)
-    String releasDate;
+    LocalDate releasDate;
     @Column(name = "stage_director", length = 100)
     String stageDirector;
     @Column(name = "starring", length = 100)
