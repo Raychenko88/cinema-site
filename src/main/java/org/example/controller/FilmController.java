@@ -72,7 +72,7 @@ public class FilmController {
         }
     }
 
-    @GetMapping(path = "by-release-date")
+    @GetMapping(path = "by-release-date-before-after")
     public ResponseEntity<List> findAllByReleaseDateBeforeAndReleaseDateIsAfter(@RequestParam LocalDate releaseDateBefore, LocalDate releaseDateAfter) {
         try {
             return new ResponseEntity<>(filmService.findAllByReleaseDateBeforeAndReleaseDateIsAfter(releaseDateBefore, releaseDateAfter), HttpStatus.OK);

@@ -17,10 +17,10 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.Set;
 
-@Qualifier("userDetails")
+@Qualifier("cinemaUserDetails")
 @Service
 @Slf4j
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class CinemaUserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserService userService;
 
