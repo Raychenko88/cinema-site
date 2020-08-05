@@ -15,6 +15,8 @@ public interface FilmDAO extends JpaRepository<Film, Integer> {
             "SELECT * FROM cinema_site c " +
                     "WHERE c.movie_title ILIKE %:movieTitle%", nativeQuery = true)
     List<Film> findAllByMovieTitle(String movieTitle);
+
     List<Film> findAllByReleaseDate(LocalDate releaseDate);
+
     List<Film> findAllByReleaseDateBeforeAndReleaseDateIsAfter(LocalDate releaseDateBefore, LocalDate releaseDateAfter);
 }

@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(User user) throws Exception {
-        if (user.getLogin() != null && userDAO.findByLogin(user.getLogin()) != null){
+        if (user.getLogin() != null && userDAO.findByLogin(user.getLogin()) != null) {
             throw new Exception("user with this login already exists");
         }
         return userDAO.save(user);
@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User update(User user) throws Exception {
-        if (user.getId() == null || userDAO.findById(user.getId()) == null){
+        if (user.getId() == null || userDAO.findById(user.getId()) == null) {
             throw new Exception("user id not found");
         }
         return userDAO.save(user);
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAll() throws Exception {
-        if (userDAO.findAll().isEmpty()){
+        if (userDAO.findAll().isEmpty()) {
             throw new Exception("no users found");
         }
         return userDAO.findAll();
@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByLogin(String login) throws Exception {
-        if (userDAO.findByLogin(login) == null){
+        if (userDAO.findByLogin(login) == null) {
             throw new Exception("user with this login was not found");
         }
         return userDAO.findByLogin(login);
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByLoginAndPassword(String login, String password) throws Exception {
-        if (userDAO.findByLoginAndPassword(login,password) == null){
+        if (userDAO.findByLoginAndPassword(login, password) == null) {
             throw new Exception("user with this login and password was not found");
         }
         return userDAO.findByLoginAndPassword(login, password);
