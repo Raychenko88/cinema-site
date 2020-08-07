@@ -1,12 +1,15 @@
 package org.example.service.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.example.dao.UserDAO;
 import org.example.model.User;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired

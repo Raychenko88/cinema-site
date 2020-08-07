@@ -1,6 +1,6 @@
 package org.example.config;
 
-import org.example.config.security.ShopPasswordEncoder;
+import org.example.config.security.CinemaPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -12,13 +12,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class UserRoleConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     @Qualifier("cinemaUserDetails")
     private UserDetailsService userDetailsService;
 
     @Bean
     public PasswordEncoder passwordEncoder(){
-        return new ShopPasswordEncoder();
+        return new CinemaPasswordEncoder();
     }
 
     @Override

@@ -2,7 +2,8 @@ package org.example.config.security;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-public class ShopPasswordEncoder implements PasswordEncoder {
+public class CinemaPasswordEncoder implements PasswordEncoder{
+
     @Override
     public String encode(CharSequence charSequence) {
         return charSequence.toString();

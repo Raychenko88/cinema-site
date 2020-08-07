@@ -21,7 +21,7 @@ public class UserController {
     @PutMapping
     public ResponseEntity<User> save(@RequestBody User user) {
         try {
-            User userFromDB = userService.save(user);
+            userService.save(user);
             return new ResponseEntity<>(user, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
@@ -32,7 +32,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<User> update(@RequestBody User user) {
         try {
-            User userFromDB = userService.update(user);
+            userService.update(user);
             return new ResponseEntity<>(user, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
@@ -83,6 +83,13 @@ public class UserController {
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping(path = "/{id}")
     public ResponseEntity delete(@PathVariable Integer id) {
-        return new ResponseEntity(HttpStatus.OK);
+        try {
+            User film = userService.findById(id);
+            userService.delete(film);
+            return new ResponseEntity(HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
+        }
     }
 }

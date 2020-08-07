@@ -19,12 +19,12 @@ import java.util.List;
 public class FilmController {
 
     @Autowired
-    FilmService filmService;
+    private FilmService filmService;
 
     @PutMapping
     public ResponseEntity<Film> save(@RequestBody Film film) {
         try {
-            return new ResponseEntity<>(film, HttpStatus.OK);
+            return new ResponseEntity<>(filmService.save(film), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
@@ -33,7 +33,7 @@ public class FilmController {
     @PostMapping
     public ResponseEntity<Film> update(@RequestBody Film film) {
         try {
-            return new ResponseEntity<>(film, HttpStatus.OK);
+            return new ResponseEntity<>(filmService.update(film), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
@@ -51,7 +51,14 @@ public class FilmController {
 
     @DeleteMapping(path = "/{id}")
     public ResponseEntity delete(@PathVariable Integer id) {
-        return new ResponseEntity(HttpStatus.OK);
+        try {
+            Film film = filmService.findById(id);
+            filmService.delete(film);
+            return new ResponseEntity(HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
+        }
     }
 
     @GetMapping(path = "by-movie-title")

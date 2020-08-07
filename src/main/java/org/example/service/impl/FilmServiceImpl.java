@@ -23,12 +23,14 @@ public class FilmServiceImpl implements FilmService {
 
         //не пойму как сделать проверку если название одинаковое а год разный
         // сейчас реализация проверки не верна
-        if (film.getId() != null && filmDAO.findById(film.getId()) != null ||
-                !filmDAO.findAllByMovieTitle(film.getMovieTitle()).isEmpty() &&
-                        !filmDAO.findAllByReleaseDate(film.getReleaseDate()).isEmpty()) {
+        if (film.getId() != null &&
+                (!filmDAO.findAllByMovieTitle(film.getMovieTitle()).isEmpty() &&
+                        !filmDAO.findAllByReleaseDate(film.getReleaseDate()).isEmpty())) {
             throw new Exception("film already exists");
         }
         return filmDAO.save(film);
+//        Film film1 = filmDAO.save(film).orElseThrow(() -> new NoEntityException(userId));
+//        Film film2 =
     }
 
     @Override
